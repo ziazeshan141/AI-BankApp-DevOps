@@ -86,6 +86,12 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+       
+        - name: Print GitHub Context
+          run: |
+            echo "Repository: ${{ github.repository }}"
+            echo "Ref: ${{ github.ref }}"
+            echo "Actor: ${{ github.actor }}"
 
       - name: Configure AWS Credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4

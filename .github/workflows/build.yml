@@ -92,6 +92,14 @@ jobs:
           echo "Repository: ${{ github.repository }}"
           echo "Ref: ${{ github.ref }}"
           echo "Actor: ${{ github.actor }}"
+
+      - name: Debug secret length (safe, no value exposed)
+        env:
+          AWS_ROLE_ARN: ${{ secrets.AWS_ROLE_ARN }}
+        run: |
+          echo "Length: ${#ROLE_ARN}"
+          echo "Starts with: ${AWS_ROLE_ARN:0:8}"
+          echo "Ends with: ${AWS_ROLE_ARN: -20}" 
     
        
       - name: Configure AWS Credentials (OIDC)
